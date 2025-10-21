@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://da3ukvatckcfi"]
+[gd_scene load_steps=7 format=4 uid="uid://da3ukvatckcfi"]
 
 [ext_resource type="Texture2D" uid="uid://b2bqx8rnul6yx" path="res://Textures/dirt.png" id="1_lo02x"]
 [ext_resource type="PackedScene" uid="uid://c7mugq3ouiqu" path="res://Player/player.tscn" id="2_n7tko"]
 [ext_resource type="PackedScene" uid="uid://dux8nof0855nm" path="res://UI/score_and_timer.tscn" id="3_aunfo"]
+[ext_resource type="PackedScene" uid="uid://b3spo8ex5vcv2" path="res://Goal/goal.tscn" id="4_rsvgk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7tko"]
 texture = ExtResource("1_lo02x")
@@ -43,6 +44,17 @@ tile_set = SubResource("TileSet_vm1ud")
 
 [node name="Player" parent="." instance=ExtResource("2_n7tko")]
 position = Vector2(225, 181)
+
+[node name="Goals" type="Node2D" parent="."]
+
+[node name="RedGoal" parent="Goals" instance=ExtResource("4_rsvgk")]
+position = Vector2(18, 144)
+rotation = 1.5707964
+isRed = true
+
+[node name="BlueGoal" parent="Goals" instance=ExtResource("4_rsvgk")]
+position = Vector2(462, 144)
+rotation = -1.5707964
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
