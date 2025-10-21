@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7mugq3ouiqu"]
 
-[ext_resource type="Script" uid="uid://rxnsrt60xamu" path="res://Player.cs" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://rxnsrt60xamu" path="res://Player/Player.cs" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://bvldac3uq33xc" path="res://Textures/RedPlayer.png" id="2_btcbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwnis"]
