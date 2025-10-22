@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dux8nof0855nm"]
+[gd_scene load_steps=3 format=3 uid="uid://dux8nof0855nm"]
+
+[ext_resource type="Texture2D" uid="uid://xopsxmcjbofy" path="res://Textures/redColor.png" id="1_2hn21"]
+[ext_resource type="Texture2D" uid="uid://dd83hb11mt3gh" path="res://Textures/blueColor.png" id="2_j8r0w"]
 
 [node name="ScoreAndTimer" type="Control"]
 layout_mode = 3
@@ -32,32 +35,30 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="redTeamColor" type="ColorRect" parent="MarginContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.9098039, 0.23137255, 0.23137255, 1)
+[node name="RedColor" type="Sprite2D" parent="MarginContainer/CenterContainer/HBoxContainer"]
+position = Vector2(-11, 11)
+texture = ExtResource("1_2hn21")
 
 [node name="redTeamStatus" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(19, 23)
 layout_mode = 2
-text = "0"
+text = "00"
+horizontal_alignment = 2
 
 [node name="ColorRect3" type="ColorRect" parent="MarginContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(5, 2)
+custom_minimum_size = Vector2(7, 2)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(0.66245234, 0.66245234, 0.6624523, 1)
 
 [node name="blueTeamStatus" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(19, 23)
 layout_mode = 2
-text = "0"
+text = "00"
 
-[node name="blueTeamColor" type="ColorRect" parent="MarginContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.3019608, 0.60784316, 0.9019608, 1)
+[node name="BlueColor" type="Sprite2D" parent="MarginContainer/CenterContainer/HBoxContainer"]
+position = Vector2(62, 11)
+texture = ExtResource("2_j8r0w")
