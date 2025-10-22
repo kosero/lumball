@@ -8,7 +8,6 @@ public partial class Goal : Area2D
 	private Sprite2D redSkin;
 	private Sprite2D blueSkin;
 
-	private Area2D area;
 	[Signal] public delegate void LumballInGoalEventHandler();
 
 	public override void _Ready()
@@ -27,8 +26,7 @@ public partial class Goal : Area2D
 			blueSkin.Visible = true;
 		}
 
-		area = GetNode<Area2D>("%Area2D");
-		area.BodyEntered += OnBodyEntered;
+		BodyEntered += OnBodyEntered;
 	}
 
 	private void OnBodyEntered(Node body)

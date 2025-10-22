@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmcf8ffpl2rp6"]
+
+[ext_resource type="Texture2D" uid="uid://diqkt2vu8uguq" path="res://Textures/lumball.png" id="1_22wbq"]
+[ext_resource type="Script" uid="uid://dwtjaomjiyrds" path="res://lumball/Lumball.cs" id="1_fximt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fximt"]
+bounce = 0.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22wbq"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fximt"]
+atlas = ExtResource("1_22wbq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16xps"]
+atlas = ExtResource("1_22wbq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpnqm"]
+atlas = ExtResource("1_22wbq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5emj"]
+atlas = ExtResource("1_22wbq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkwpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fximt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16xps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpnqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5emj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fximt"]
+
+[node name="lumball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_fximt")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_fximt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_22wbq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_jkwpl")
+frame_progress = 0.67833656
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fximt")
