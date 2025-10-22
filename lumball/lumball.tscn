@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dwtjaomjiyrds" path="res://lumball/Lumball.cs" id="1_fximt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fximt"]
-bounce = 0.8
+friction = 0.0
+bounce = 0.7
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22wbq"]
-radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fximt"]
 atlas = ExtResource("1_22wbq")
@@ -53,9 +53,11 @@ collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_fximt")
 gravity_scale = 0.0
 lock_rotation = true
+linear_damp = 2.0
 script = ExtResource("1_fximt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_22wbq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

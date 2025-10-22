@@ -36,7 +36,6 @@ public partial class Goal : Area2D
 
 		if (body is Lumball)
 		{
-			body.QueueFree();
 			EmitSignal("LumballInGoal");
 		}
 	}

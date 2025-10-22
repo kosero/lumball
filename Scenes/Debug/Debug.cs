@@ -4,6 +4,7 @@ using System;
 public partial class Debug : Node2D
 {
 	private PackedScene lumball;
+	private PackedScene player;
 
 	private Goal redGoal;
 	private Goal blueGoal;
@@ -24,9 +25,12 @@ public partial class Debug : Node2D
 	[Signal]
 	public delegate void GoalBlueEventHandler();
 
+	private Node2D lumballInstance;
+
 	public override void _Ready()
 	{
 		lumball = GD.Load<PackedScene>("res://lumball/lumball.tscn");
+		player = GD.Load<PackedScene>("res://Player/player.tscn");
 
 		redGoal = GetNode<Goal>("%RedGoal");
 		blueGoal = GetNode<Goal>("%BlueGoal");
@@ -43,6 +47,7 @@ public partial class Debug : Node2D
 		blueTeamStatus.Text = blueScore.ToString();
 
 		SpawnLumball();
+		SpawnPlayer();
 	}
 
 	public override void _Process(double delta)
@@ -58,28 +63,52 @@ public partial class Debug : Node2D
 	{
 		if (lumball != null)
 		{
-			Node2D lumballInstance = (Node2D)lumball.Instantiate();
+			lumballInstance = (Node2D)lumball.Instantiate();
 			lumballInstance.Position = new Vector2(240, 144);
-			lumballInstance.Name = "Lumball_" + GD.Randi();
 			AddChild(lumballInstance);
+		}
+	}
+
+	//	This is just example, not really spawner
+	private void SpawnPlayer()
+	{
+		if (lumball != null)
+		{
+			Node2D playerInstance = (Node2D)player.Instantiate();
+			playerInstance.Position = new Vector2(300, 144);
+			AddChild(playerInstance);
+		}
+
+	}
+
+	private void ResetLumball()
+	{
+		lumballInstance.Position = new Vector2(240, 144);
+
+		var body = lumballInstance as RigidBody2D;
+		if (body != null)
+		{
+			body.LinearVelocity = Vector2.Zero;
+			body.AngularVelocity = 0;
+			body.Sleeping = false;
 		}
 	}
 
 	private void redGoalInLumball()
 	{
-		redScore++;
-		redTeamStatus.Text = redScore.ToString();
+		blueScore++;
+		blueTeamStatus.Text = blueScore.ToString();
 
+		CallDeferred(nameof(ResetLumball));
 		EmitSignal("GoalRed");
-		CallDeferred(nameof(SpawnLumball));
 	}
 
 	private void blueGoalInLumball()
 	{
-		blueScore++;
-		blueTeamStatus.Text = blueScore.ToString();
+		redScore++;
+		redTeamStatus.Text = redScore.ToString();
 
-		CallDeferred(nameof(SpawnLumball));
+		CallDeferred(nameof(ResetLumball));
 		EmitSignal("GoalBlue");
 	}
 }

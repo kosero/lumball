@@ -1,10 +1,12 @@
 using Godot;
-using System;
 
 public partial class Lumball : RigidBody2D
 {
 	private AnimatedSprite2D anim;
 	private Area2D area;
+
+	[Signal] public delegate void LumballTouchedWallEventHandler();
+	[Signal] public delegate void PlayerTouchedLumballEventHandler();
 
 	public override void _Ready()
 	{
@@ -15,9 +17,18 @@ public partial class Lumball : RigidBody2D
 		area.BodyEntered += OnBodyEntered;
 	}
 
-	private void OnBodyEntered(Node body)
+	private async void OnBodyEntered(Node body)
 	{
 		if (body is TileMapLayer)
-			GD.Print("TODO");
+		{
+			EmitSignal("LumballTouchedWall");
+			return;
+		}
+
+		if (body is Player)
+		{
+			EmitSignal("PlayerTouchedLumball");
+			return;
+		}
 	}
 }

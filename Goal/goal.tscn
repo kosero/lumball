@@ -1,25 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3spo8ex5vcv2"]
+[gd_scene load_steps=4 format=3 uid="uid://b3spo8ex5vcv2"]
 
 [ext_resource type="Texture2D" uid="uid://cirai71jqdcbd" path="res://Textures/redGoal.png" id="1_3nqkf"]
 [ext_resource type="Script" uid="uid://bi7a7fhlqbve5" path="res://Goal/Goal.cs" id="1_y78nh"]
 [ext_resource type="Texture2D" uid="uid://dgbcwlvragon7" path="res://Textures/blueGoal.png" id="2_3iwka"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3iwka"]
-size = Vector2(96, 36)
-
 [node name="Goal" type="Area2D"]
+collision_layer = 9
+collision_mask = 15
 script = ExtResource("1_y78nh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_3iwka")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-42, -18, -40, 6, 42, 6, 44, -18, 39, -18, 37, 1, -35, 1, -37, -18)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -2)
-polygon = PackedVector2Array(-35, 3, -37, -15, 39, -15, 37, 3)
+polygon = PackedVector2Array(-35, 3, -36, -1, 38, -1, 37, 3)
 
 [node name="Skins" type="Node2D" parent="."]
 z_index = 3

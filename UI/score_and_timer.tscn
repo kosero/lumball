@@ -60,5 +60,5 @@ layout_mode = 2
 text = "00"
 
 [node name="BlueColor" type="Sprite2D" parent="MarginContainer/CenterContainer/HBoxContainer"]
-position = Vector2(62, 11)
+position = Vector2(63, 11)
 texture = ExtResource("2_j8r0w")

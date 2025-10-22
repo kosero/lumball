@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdin3xwue3lpd"]
+
+[ext_resource type="Texture2D" uid="uid://bpwpomyhbigym" path="res://Textures/landspace.png" id="1_p8ccj"]
+[ext_resource type="Script" uid="uid://bxiarsxl1lkxj" path="res://UI/MainMenu.cs" id="1_tk8dj"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tk8dj")
+
+[node name="Landspace" type="Sprite2D" parent="."]
+position = Vector2(240, 144)
+texture = ExtResource("1_p8ccj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 17.0
+offset_right = 269.0
+offset_bottom = 40.0
+text = "Lumball..!"
+
+[node name="SettingsBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 140.0
+offset_right = 244.0
+offset_bottom = 175.0
+text = "Settings"
+
+[node name="HostBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 100.0
+offset_right = 268.0
+offset_bottom = 131.0
+text = "Host"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 56.0
+offset_right = 328.0
+offset_bottom = 96.0
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "Host ip..."
+
+[node name="JoinBtn" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="debugBtn" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 256.0
+offset_top = 142.0
+offset_right = 298.0
+offset_bottom = 173.0
+text = "sikis"
